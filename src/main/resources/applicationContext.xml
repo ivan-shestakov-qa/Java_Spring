@@ -13,12 +13,13 @@
           class="org.example.RockMusic">
     </bean>
     <bean id="musicPlayer"
-          class="org.example.MusicPlayer">
-<!--        <constructor-arg ref="musicBean"/>-->
+          class="org.example.MusicPlayer"
+          scope="prototype">
+        <!--        <constructor-arg ref="musicBean"/>-->
         <property name="music" ref="musicBean"/>
 
-<!--        <property name="name" value="Some name"/>-->
-<!--        <property name="volume" value="50"/>-->
+        <!--        <property name="name" value="Some name"/>-->
+        <!--        <property name="volume" value="50"/>-->
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
