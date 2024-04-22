@@ -1,19 +1,26 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
-@NoArgsConstructor
+@Component
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Getter
 @Setter
 public class MusicPlayer {
-    private Music music;
-    private String name;
-    private int volume;
-    public void playMusic(){
-        System.out.println("playing: " + music.getSong());
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
+//    private String name;
+//    private int volume;
+    @Autowired
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic){
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
+    }
+    public String playMusic(){
+        return "playing: " + classicalMusic.getSong();
     }
 }
